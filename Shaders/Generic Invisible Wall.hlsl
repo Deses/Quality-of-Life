@@ -1,6 +1,4 @@
-// Invisible wall shaders that show up when you get really close, like those at tatarasuna and eye of the sands.
-// This file makes them visible from any distance (granted that they still load at that distance). 
-// Check line 138 to edit the opacity and the color of these walls.
+// Modified by QoL mod: Generic Invisible Wall.hlsl
 Texture2D<float4> t4 : register(t4);
 
 Texture2D<float4> t3 : register(t3);
@@ -28,6 +26,9 @@ cbuffer cb0 : register(b0)
 {
   float4 cb0[31];
 }
+
+
+
 
 // 3Dmigoto declarations
 #define cmp -
@@ -132,8 +133,10 @@ void main(
     o0.xyz = r0.xzw;
   }
 //  The line below changes the opacity of the walls, 1 is opaque and 0 is transparent.
-  o0.w = 0.2;
+  o0.w = 0.12;
 //  You can also change the color with an RGB value with each color as a float between 0 and 1 by uncommenting the line below. (0,0,0) is black while (1,1,1) is white.
 //  o0.xyz = float3(0.0, 0.0, 0.0);
   return;
 }
+
+

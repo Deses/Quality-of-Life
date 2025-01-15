@@ -1,4 +1,4 @@
-// 8519ecdca8b4f29b
+// Modified by QoL mod: Water Cubes Transparency.hlsl
 Texture2D<float4> t12 : register(t12);
 
 Texture2D<float4> t11 : register(t11);
@@ -674,3 +674,5 @@ void main(
 //  o0.xyz = float3(1,1,1);
   return;
 }
+
+

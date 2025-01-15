@@ -1,5 +1,4 @@
-// This file changes the walls in Seirai Island that shows the boundaries of the Balethunder area before completing the Seirai Stormchasers questline. Check line 165 to change the color or opacity.
-// Unfortunately, it doesn't seem to be rendered at all if you're not close to it, so it'll only show up when you go near it. I couldn't find a way to solve this, if you can solve it feel free to leave a comment.
+// Modified by QoL mod: Seirai Invisible Wall.hlsl
 Texture2D<float4> t5 : register(t5);
 
 Texture2D<float4> t4 : register(t4);
@@ -32,10 +31,14 @@ cbuffer cb0 : register(b0)
   float4 cb0[34];
 }
 
+
+
+
 // 3Dmigoto declarations
 #define cmp -
 Texture1D<float4> IniParams : register(t120);
 Texture2D<float4> StereoParams : register(t125);
+
 
 void main(
   float4 v0 : TEXCOORD0,
@@ -160,8 +163,11 @@ void main(
   } else {
     o0.xyz = r0.xzw;
   }
-// o0.xyz = float3(1,1,1);
-// The line above changes the walls' color with x y z being R G B values respectively, while the line below changes their opacity - 1 is opaque, 0 is transparent. Uncomment the line above to change their color.
-  o0.w = 0.2;
+//  The line below changes the opacity of the walls, 1 is opaque and 0 is transparent.
+  o0.w = 0.12;
+//  You can also change the color with an RGB value with each color as a float between 0 and 1 by uncommenting the line below. (0,0,0) is black while (1,1,1) is white.
+//  o0.xyz = float3(0.0, 0.0, 0.0);
   return;
 }
+
+

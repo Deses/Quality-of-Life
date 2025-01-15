@@ -1,5 +1,4 @@
-// Invisible shaders part 2: these are a different kind like those at sumeru, idk how to describe them in a way that distinguishes them from the other.
-// If you want to re-enable this effect, simply delete this file or search for "discard" and uncomment any commented lines, and edit line 406 to make the blue glass shard effect visible again.
+// Modified by QoL mod: Sumeru Invisible Wall.hlsl
 Texture2D<float4> t4 : register(t4);
 
 Texture2D<float4> t3 : register(t3);
@@ -29,6 +28,8 @@ cbuffer cb0 : register(b0)
 {
   float4 cb0[97];
 }
+
+
 
 
 // 3Dmigoto declarations
@@ -433,3 +434,5 @@ void main(
   o5.x = 0;
   return;
 }
+
+

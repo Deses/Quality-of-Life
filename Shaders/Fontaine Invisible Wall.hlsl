@@ -1,4 +1,4 @@
-//Fontaine invisible blue block shader, check line 233 for the effect that makes the block invisible.
+// Modified by QoL mod: Fontaine Invisible Wall.hlsl
 Texture2D<float4> t4 : register(t4);
 
 TextureCube<float4> t3 : register(t3);
@@ -36,7 +36,7 @@ cbuffer cb1 : register(b1)
 
 cbuffer cb0 : register(b0)
 {
-  float4 cb0[102];
+  float4 cb0[142];
 }
 
 
@@ -79,9 +79,9 @@ void main(
   r0.x = dot(r0.xyz, r0.xyz);
   r0.yzw = -cb3[3].xyz + cb1[5].xyz;
   r0.y = dot(r0.yzw, r0.yzw);
-  r1.xyz = cb0[61].xyz + -v8.xyz;
+  r1.xyz = cb0[97].xyz + -v8.xyz;
   r0.z = dot(r1.xyz, r1.xyz);
-  r1.xyz = -cb3[3].xyz + cb0[61].xyz;
+  r1.xyz = -cb3[3].xyz + cb0[97].xyz;
   r0.w = dot(r1.xyz, r1.xyz);
   r0.xyzw = sqrt(r0.xyzw);
   r1.xy = v2.xy * float2(6,6) + v6.xy;
@@ -224,13 +224,11 @@ void main(
     r1.y = dot(cb0[10].xyzw, icb[r0.z+0].xyzw);
     r1.z = dot(cb0[11].xyzw, icb[r0.z+0].xyzw);
     r1.w = dot(cb0[12].xyzw, icb[r0.z+0].xyzw);
-//  r1's x, y, z and w values all determine a certain layers's visibility. The whole block seems to be made from 4 different layers, if you only leave 1-3 it can be transparent, but it's not very pleasing to the eyes so that's not the default. If you want to try this out, first re-enable the other effect below, then uncomment the line below this and change the values below to your liking, 1 is on and 0 is off. (The -1 at the end is for convenience, otherwise it'd be -1 on and 0 off and that's not very logical.)
-//  r1.xyzw = float4(1,1,1,1) * -1;
     r0.y = dot(r1.xyzw, icb[r0.y+0].xyzw);
     r0.x = r0.x * 17 + -r0.y;
     r0.x = -0.00999999978 + r0.x;
-//  Uncomment the line below to re-enable the effect. Check above for alternative solution to disabling.
-//  if (r0.x != 0) discard;
+    r0.x = cmp(r0.x < 0);
+//    if (r0.x != 0) discard;
   }
   r0.x = max(r2.y, r2.z);
   r0.w = max(r2.x, r0.x);
@@ -238,14 +236,14 @@ void main(
   r0.xyz = r2.xyz / r0.www;
   r2.w = 1;
   r0.xyzw = r1.xxxx ? r0.zwxy : r2.zwxy;
-  r1.x = cmp(0 != cb0[101].x);
+  r1.x = cmp(0 != cb0[141].x);
   if (r1.x != 0) {
     r1.xyz = v4.xyz * float3(0.5,0.5,0.5) + float3(0.5,0.5,0.5);
     o1.xyz = r0.zwx;
     o1.w = 0;
     r1.w = 0;
     r2.w = 0.00100000005;
-    r0.x = 0.00392156886 * cb0[101].y;
+    r0.x = 0.00392156886 * cb0[141].y;
     r0.y = 0.00100000005;
   } else {
     r3.x = saturate(0.0500000007 * r0.y);
@@ -265,3 +263,5 @@ void main(
   o5.x = 0;
   return;
 }
+
+

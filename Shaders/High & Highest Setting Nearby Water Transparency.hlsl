@@ -1,4 +1,4 @@
-// e7ab4209ab52f196
+// Modified by QoL mod: High & Highest Setting Nearby Water Transparency.hlsl
 Texture2D<float4> t20 : register(t20);
 
 Texture2D<float4> t19 : register(t19);
@@ -1321,3 +1321,5 @@ void main(
 //  o0.xyz = float3(1,1,1);
   return;
 }
+
+

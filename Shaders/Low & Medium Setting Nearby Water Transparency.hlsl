@@ -1,4 +1,4 @@
-// bcb7dbf365c9237b
+// Modified by QoL mod: Low & Medium Setting Nearby Water Transparency.hlsl
 Texture2D<float4> t20 : register(t20);
 
 Texture2D<float4> t19 : register(t19);
@@ -947,3 +947,5 @@ void main(
 //  o0.xyz = float3(1,1,1);
   return;
 }
+
+
